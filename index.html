@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Dani Seuba — Coming Soon</title>
+  <meta name="description" content="Dani Seuba. New website coming soon.">
+  <meta property="og:title" content="Dani Seuba — Coming Soon">
+  <meta property="og:description" content="A new website is on its way.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://daniseuba.com/">
+  <meta property="og:image" content="https://daniseuba.com/images/sunset.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; padding: 0; height: 100%; background: #070b12; }
+    *, *::before, *::after { box-sizing: border-box; }
+
+    .bg-layer {
+      position: fixed; inset: 0; z-index: 0;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      opacity: 0;
+      transform: scale(1.02);
+      transition: opacity 1.6s ease;
+    }
+
+    .overlay {
+      position: fixed; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(to bottom,
+        rgba(0,0,0,0.20) 0%,
+        rgba(0,0,0,0.02) 35%,
+        rgba(0,0,0,0.04) 65%,
+        rgba(0,0,0,0.26) 100%);
+    }
+
+    .shell {
+      position: fixed; inset: 0; z-index: 2;
+      display: grid; grid-template-rows: auto 1fr auto;
+      color: rgba(255,255,255,0.94);
+      font-family: 'Space Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      text-shadow: 0 1px 24px rgba(0,0,0,0.20);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .site-header {
+      display: flex; justify-content: center;
+      padding: max(1.6rem, env(safe-area-inset-top)) clamp(1.25rem, 3vw, 3rem) 0;
+    }
+    .site-header p {
+      margin: 0;
+      font-size: clamp(0.875rem, 1vw, 1.125rem);
+      font-weight: 500; letter-spacing: 0.04em; opacity: 0.92;
+      white-space: nowrap;
+    }
+
+    .clock-wrapper {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: clamp(0.9rem, 2.2vh, 1.6rem);
+      padding: 0 clamp(1rem, 3vw, 3rem);
+    }
+    #clock {
+      display: block;
+      font-size: clamp(4.5rem, 15vw, 13rem);
+      font-weight: 500; line-height: 0.9; letter-spacing: -0.06em;
+      font-variant-numeric: tabular-nums; font-feature-settings: 'tnum' 1;
+      text-align: center; white-space: nowrap;
+    }
+    #colon { transition: opacity 120ms ease; }
+    .place {
+      margin: 0;
+      font-size: clamp(0.875rem, 1vw, 1.125rem);
+      font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.82;
+    }
+
+    .site-footer {
+      display: flex; justify-content: center;
+      padding: 0 clamp(1.25rem, 3vw, 3rem) max(1.6rem, env(safe-area-inset-bottom));
+    }
+    .site-footer p {
+      margin: 0; max-width: 85vw;
+      font-size: clamp(0.75rem, 0.9vw, 0.95rem);
+      font-weight: 400; letter-spacing: 0.01em; opacity: 0.86;
+    }
+    .site-footer a {
+      color: inherit;
+      text-decoration: underline; text-decoration-thickness: 0.08em; text-underline-offset: 0.22em;
+      opacity: 0.82; transition: opacity 180ms ease;
+    }
+    .site-footer a:hover, .site-footer a:focus-visible { opacity: 1; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bg-layer { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <div id="layerA" class="bg-layer" aria-hidden="true"></div>
+  <div id="layerB" class="bg-layer" aria-hidden="true"></div>
+  <div class="overlay" aria-hidden="true"></div>
+
+  <main class="shell">
+    <header class="site-header">
+      <p>Dani Seuba — Coming Soon</p>
+    </header>
+
+    <section class="clock-wrapper" aria-label="Current time in Madrid">
+      <time id="clock" datetime=""><span id="hh">00</span><span id="colon">:</span><span id="mm">00</span></time>
+      <p class="place">Madrid, Spain</p>
+    </section>
+
+    <footer class="site-footer">
+      <p>Meanwhile, you can stalk me on <a href="https://www.linkedin.com/in/daniseuba/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      var backgrounds = {
+        predawn: "images/predawn.webp",
+        sunrise: "images/sunrise.webp",
+        earlyMorning: "images/early-morning.webp",
+        noon: "images/noon.webp",
+        afternoon: "images/afternoon.webp",
+        goldenHour: "images/golden-hour.webp",
+        sunset: "images/sunset.webp",
+        blueHour: "images/blue-hour.webp",
+        night: "images/night.webp"
+      };
+      var order = ["night","predawn","sunrise","earlyMorning","noon","afternoon","goldenHour","sunset","blueHour"];
+
+      var layerA = document.getElementById("layerA");
+      var layerB = document.getElementById("layerB");
+      var clock = document.getElementById("clock");
+      var hhEl = document.getElementById("hh");
+      var mmEl = document.getElementById("mm");
+      var colonEl = document.getElementById("colon");
+
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduce) { layerA.style.transition = "none"; layerB.style.transition = "none"; }
+
+      var front = null;
+      var activePeriod = null;
+      var lastMinute = null;
+
+      function toMinutes(h, m) { return h * 60 + m; }
+
+      function getMadridParts() {
+        var parts = new Intl.DateTimeFormat("en-GB", {
+          timeZone: "Europe/Madrid", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false
+        }).formatToParts(new Date());
+        var v = {};
+        parts.forEach(function (p) { v[p.type] = p.value; });
+        return { hour: Number(v.hour), minute: Number(v.minute), second: Number(v.second) };
+      }
+
+      function getPeriod(h, m) {
+        var c = toMinutes(h, m);
+        if (c >= toMinutes(5,30)  && c < toMinutes(6,45))  return "predawn";
+        if (c >= toMinutes(6,45)  && c < toMinutes(8,15))  return "sunrise";
+        if (c >= toMinutes(8,15)  && c < toMinutes(11,30)) return "earlyMorning";
+        if (c >= toMinutes(11,30) && c < toMinutes(14,30)) return "noon";
+        if (c >= toMinutes(14,30) && c < toMinutes(17,30)) return "afternoon";
+        if (c >= toMinutes(17,30) && c < toMinutes(19,30)) return "goldenHour";
+        if (c >= toMinutes(19,30) && c < toMinutes(21,15)) return "sunset";
+        if (c >= toMinutes(21,15) && c < toMinutes(22,45)) return "blueHour";
+        return "night";
+      }
+
+      function setBackground(url) {
+        var incoming = front === layerA ? layerB : layerA;
+        var outgoing = front;
+        function reveal() {
+          incoming.style.backgroundImage = 'url("' + url + '")';
+          incoming.style.opacity = "1";
+          if (outgoing) outgoing.style.opacity = "0";
+          front = incoming;
+        }
+        var img = new Image();
+        img.onload = reveal;
+        img.onerror = reveal;
+        img.src = url;
+      }
+
+      function preloadNext(period) {
+        var i = order.indexOf(period);
+        var next = order[(i + 1) % order.length];
+        var img = new Image();
+        img.src = backgrounds[next];
+      }
+
+      function update() {
+        var t = getMadridParts();
+        if (t.minute !== lastMinute) {
+          lastMinute = t.minute;
+          hhEl.textContent = String(t.hour).padStart(2, "0");
+          mmEl.textContent = String(t.minute).padStart(2, "0");
+        }
+        colonEl.style.opacity = t.second % 2 === 0 ? "1" : "0.15";
+        clock.dateTime = new Date().toISOString();
+
+        var period = getPeriod(t.hour, t.minute);
+        if (period !== activePeriod) {
+          activePeriod = period;
+          setBackground(backgrounds[period]);
+          preloadNext(period);
+        }
+      }
+
+      update();
+      setInterval(update, 1000);
+    })();
+  </script>
+</body>
+</html>
