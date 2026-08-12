@@ -32,7 +32,7 @@
 
     /* ===== STAGE: the photo lives fully inside this top block ===== */
     .stage{
-      position:relative; height:78dvh; overflow:hidden; background:#070b12;
+      position:relative; height:80dvh; overflow:hidden; background:#070b12;
     }
     .bg-layer{
       position:absolute; inset:0; z-index:0;
@@ -73,18 +73,19 @@
 
     /* ===== FALDÓN: separate block, interior aesthetic, ~30% smaller ===== */
     .faldon{
-      display:flex; flex-direction:column; justify-content:center; gap:0.3rem;
-      height:22dvh; padding:0 clamp(1.5rem,5vw,4rem);
+      display:flex; flex-direction:column; justify-content:center; align-items:center;
+      height:20dvh; padding:0 clamp(1.5rem,5vw,4rem);
       background:var(--cream); color:var(--ink); text-decoration:none;
-      border-top:1.5px solid var(--ink); overflow:hidden;
+      overflow:hidden;
       transition:background 0.22s ease, color 0.22s ease;
     }
+    .faldon-inner{ display:flex; flex-direction:column; align-items:flex-start; gap:0.28rem; }
     .faldon:hover,.faldon:focus-visible{ background:var(--ink); color:var(--cream); }
-    .faldon .f-eyebrow{ font-size:clamp(0.6rem,1.3vw,0.72rem); font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); transition:color 0.22s ease; }
+    .faldon .f-eyebrow{ font-size:clamp(0.56rem,1.2vw,0.68rem); font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); transition:color 0.22s ease; }
     .faldon:hover .f-eyebrow{ color:rgba(243,240,231,0.7); }
-    .faldon .f-title{ font-family:var(--display); font-weight:700; font-size:clamp(1.5rem,5.5vw,3rem); line-height:0.9; letter-spacing:-0.02em; }
+    .faldon .f-title{ font-family:var(--display); font-weight:700; font-size:clamp(1.35rem,5vw,2.7rem); line-height:0.9; letter-spacing:-0.02em; }
     .faldon .f-title .sq{ display:inline-block; width:0.5em; height:0.16em; background:var(--orange); vertical-align:middle; margin-left:0.12em; }
-    .faldon .f-cta{ font-size:clamp(0.78rem,1.5vw,0.95rem); font-weight:600; }
+    .faldon .f-cta{ font-size:clamp(0.72rem,1.4vw,0.9rem); font-weight:600; }
     .faldon .f-cta::after{ content:" →"; }
 
     @media(prefers-reduced-motion:reduce){ .bg-layer{ transition:none; } }
@@ -110,9 +111,11 @@
   </section>
 
   <a class="faldon" href="/thesis/" aria-label="Read the thesis: Joyful Deliberate">
-    <span class="f-eyebrow">EMBA Thesis · Creative Leadership · 2025</span>
-    <span class="f-title">Joyful Deliberate<span class="sq"></span></span>
-    <span class="f-cta">Read the thesis</span>
+    <span class="faldon-inner">
+      <span class="f-eyebrow">EMBA Thesis · Creative Leadership · 2025</span>
+      <span class="f-title">Joyful Deliberate<span class="sq"></span></span>
+      <span class="f-cta">Read the thesis</span>
+    </span>
   </a>
 
   <script>
