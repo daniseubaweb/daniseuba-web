@@ -13,8 +13,16 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
+    :root{
+      --amber:#F5B301;
+      --ink:#16130F;
+      --cream:#F3F0E7;
+      --display:'Clash Display','Archivo Black','Space Grotesk',sans-serif;
+    }
     html, body { margin: 0; padding: 0; height: 100%; background: #070b12; }
     *, *::before, *::after { box-sizing: border-box; }
 
@@ -34,12 +42,13 @@
         rgba(0,0,0,0.20) 0%,
         rgba(0,0,0,0.02) 35%,
         rgba(0,0,0,0.04) 65%,
-        rgba(0,0,0,0.26) 100%);
+        rgba(0,0,0,0.30) 100%);
     }
 
+    /* main experience occupies the top 70%; faldón takes the bottom 30% */
     .shell {
-      position: fixed; inset: 0; z-index: 2;
-      display: grid; grid-template-rows: auto 1fr auto;
+      position: fixed; top: 0; left: 0; right: 0; height: 70dvh; z-index: 2;
+      display: grid; grid-template-rows: auto 1fr;
       color: rgba(255,255,255,0.94);
       font-family: 'Space Grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
       text-shadow: 0 1px 24px rgba(0,0,0,0.20);
@@ -47,15 +56,26 @@
     }
 
     .site-header {
-      display: flex; justify-content: center;
+      display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
       padding: max(1.6rem, env(safe-area-inset-top)) clamp(1.25rem, 3vw, 3rem) 0;
+      text-align: center;
     }
-    .site-header p {
+    .site-header .name {
       margin: 0;
       font-size: clamp(0.875rem, 1vw, 1.125rem);
-      font-weight: 500; letter-spacing: 0.04em; opacity: 0.92;
-      white-space: nowrap;
+      font-weight: 500; letter-spacing: 0.04em; opacity: 0.92; white-space: nowrap;
     }
+    .site-header .li {
+      margin: 0;
+      font-size: clamp(0.75rem, 0.9vw, 0.95rem);
+      font-weight: 400; letter-spacing: 0.01em; opacity: 0.82;
+    }
+    .site-header .li a {
+      color: inherit;
+      text-decoration: underline; text-decoration-thickness: 0.08em; text-underline-offset: 0.22em;
+      opacity: 0.9; transition: opacity 180ms ease;
+    }
+    .site-header .li a:hover, .site-header .li a:focus-visible { opacity: 1; }
 
     .clock-wrapper {
       display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -64,7 +84,7 @@
     }
     #clock {
       display: block;
-      font-size: clamp(4.5rem, 15vw, 13rem);
+      font-size: clamp(4rem, 14vw, 12rem);
       font-weight: 500; line-height: 0.9; letter-spacing: -0.06em;
       font-variant-numeric: tabular-nums; font-feature-settings: 'tnum' 1;
       text-align: center; white-space: nowrap;
@@ -76,24 +96,30 @@
       font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.82;
     }
 
-    .site-footer {
-      display: flex; justify-content: center;
-      padding: 0 clamp(1.25rem, 3vw, 3rem) max(1.6rem, env(safe-area-inset-bottom));
+    /* FALDÓN — bottom 30%, links to the thesis microsite */
+    .faldon {
+      position: fixed; left: 0; right: 0; bottom: 0; height: 30dvh; z-index: 3;
+      display: flex; flex-direction: column; justify-content: center; gap: 0.35rem;
+      padding: clamp(1rem, 3vh, 2rem) clamp(1.25rem, 5vw, 4rem) max(1rem, env(safe-area-inset-bottom));
+      background: var(--amber); color: var(--ink); text-decoration: none;
+      border-top: 2px solid var(--ink); overflow: hidden;
+      transition: background 0.22s ease, color 0.22s ease;
     }
-    .site-footer p {
-      margin: 0; max-width: 85vw;
-      font-size: clamp(0.75rem, 0.9vw, 0.95rem);
-      font-weight: 400; letter-spacing: 0.01em; opacity: 0.86;
+    .faldon:hover, .faldon:focus-visible { background: var(--ink); color: var(--cream); }
+    .faldon .f-eyebrow {
+      font-size: clamp(0.62rem, 1.5vw, 0.8rem); font-weight: 600;
+      letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.85;
     }
-    .site-footer a {
-      color: inherit;
-      text-decoration: underline; text-decoration-thickness: 0.08em; text-underline-offset: 0.22em;
-      opacity: 0.82; transition: opacity 180ms ease;
+    .faldon .f-title {
+      font-family: var(--display); font-weight: 700;
+      font-size: clamp(2rem, 8.5vw, 5rem); line-height: 0.88; letter-spacing: -0.02em;
     }
-    .site-footer a:hover, .site-footer a:focus-visible { opacity: 1; }
+    .faldon .f-cta { font-size: clamp(0.8rem, 1.7vw, 1rem); font-weight: 600; }
+    .faldon .f-cta::after { content: " →"; }
 
     @media (prefers-reduced-motion: reduce) {
       .bg-layer { transition: none; }
+      html { scroll-behavior: auto; }
     }
   </style>
 </head>
@@ -104,18 +130,21 @@
 
   <main class="shell">
     <header class="site-header">
-      <p>Dani Seuba — Coming Soon</p>
+      <p class="name">Dani Seuba — Coming Soon</p>
+      <p class="li">Meanwhile, you can stalk me on <a href="https://www.linkedin.com/in/daniseuba/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
     </header>
 
     <section class="clock-wrapper" aria-label="Current time in Madrid">
       <time id="clock" datetime=""><span id="hh">00</span><span id="colon">:</span><span id="mm">00</span></time>
       <p class="place">Madrid, Spain</p>
     </section>
-
-    <footer class="site-footer">
-      <p>Meanwhile, you can stalk me on <a href="https://www.linkedin.com/in/daniseuba/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
-    </footer>
   </main>
+
+  <a class="faldon" href="/thesis/" aria-label="Read the thesis: Joyful Deliberate">
+    <span class="f-eyebrow">EMBA Thesis · Creative Leadership · 2025</span>
+    <span class="f-title">Joyful Deliberate</span>
+    <span class="f-cta">Read the thesis</span>
+  </a>
 
   <script>
     (function () {
