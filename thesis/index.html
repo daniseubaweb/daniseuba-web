@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Joyful Deliberate — Dani Seuba · EMBA Thesis 2025</title>
-  <meta name="description" content="A master thesis on the relationship between humor-inclusive work environments, psychological safety and business innovation. By Dani Seuba, Berlin School of Creative Leadership, 2025.">
+  <meta name="description" content="A master thesis on the relationship between humor-inclusive work environments, psychological safety and business innovation. By Dani Seuba, Berlin School of Creative Leadership / Steinbeis University, 2025.">
   <meta property="og:title" content="Joyful Deliberate — Dani Seuba">
   <meta property="og:description" content="What if humor is not the opposite of serious work — but its origin?">
   <meta property="og:type" content="article">
@@ -23,131 +23,120 @@
       --amber:#F5B301;
       --orange:#F0531C;
       --muted:#6b665d;
-      --line:rgba(22,19,15,0.14);
+      --gutter:clamp(1.5rem,5vw,4rem);
+      --vspace:clamp(3rem,8vh,6rem);
+      --colgap:clamp(1.75rem,5vw,5rem);
       --display:'Clash Display','Archivo Black','Space Grotesk',system-ui,sans-serif;
       --body:'Space Grotesk','Helvetica Neue',Helvetica,Arial,sans-serif;
     }
     *,*::before,*::after{box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
+    html{scroll-behavior:smooth; overflow-x:hidden;}
     body{
       margin:0; background:var(--cream); color:var(--ink);
       font-family:var(--body); -webkit-font-smoothing:antialiased;
-      font-size:clamp(1rem,0.55vw + 0.9rem,1.15rem); line-height:1.55;
+      font-size:clamp(1rem,0.5vw + 0.9rem,1.12rem); line-height:1.55;
+      overflow-x:hidden;
     }
+    h1,h2,h3,h4{overflow-wrap:break-word;}
     a{color:inherit;}
-    .wrap{max-width:1180px; margin:0 auto; padding:0 clamp(1.25rem,4vw,4rem);}
-    .display{font-family:var(--display); font-weight:700; line-height:0.92; letter-spacing:-0.02em;}
-    .eyebrow{
-      font-size:0.72rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase;
-      color:var(--muted);
-    }
-    .u-amber{ text-decoration:underline; text-decoration-color:var(--amber); text-decoration-thickness:0.14em; text-underline-offset:0.1em;}
-    .u-orange{ text-decoration:underline; text-decoration-color:var(--orange); text-decoration-thickness:0.14em; text-underline-offset:0.1em;}
-    .amber{color:var(--amber);} .orange{color:var(--orange);}
 
-    /* ---------- top bar ---------- */
-    .topbar{
-      display:flex; justify-content:space-between; align-items:center;
-      padding:1.35rem 0; border-bottom:1px solid var(--line);
-    }
+    /* ---------- grid system (one grid for the whole site) ---------- */
+    .wrap{max-width:1200px; margin:0 auto; padding:0 var(--gutter);}
+    .grid2{display:grid; grid-template-columns:1fr 1fr; gap:var(--colgap); align-items:start;}
+    @media(max-width:820px){ .grid2{grid-template-columns:1fr; gap:1.4rem;} }
+
+    .display{font-family:var(--display); font-weight:700; line-height:0.92; letter-spacing:-0.02em;}
+    .eyebrow{font-size:0.72rem; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin:0;}
+    .kicker{color:var(--orange);}
+    .u-amber{text-decoration:underline; text-decoration-color:var(--amber); text-decoration-thickness:0.14em; text-underline-offset:0.1em;}
+    .u-orange{text-decoration:underline; text-decoration-color:var(--orange); text-decoration-thickness:0.14em; text-underline-offset:0.1em;}
+    .amber{color:var(--amber);} .orange{color:var(--orange);}
+    .square{display:inline-block; width:0.5em; height:0.16em; background:var(--orange); vertical-align:middle; margin-left:0.12em;}
+
+    /* ---------- top bar (no divider line) ---------- */
+    .topbar{display:flex; justify-content:space-between; align-items:center; padding:1.35rem 0;}
     .topbar .brand{font-family:var(--display); font-weight:700; font-size:1.05rem; letter-spacing:-0.01em; text-decoration:none;}
     .topbar .back{font-size:0.82rem; font-weight:500; text-decoration:none; color:var(--muted);}
     .topbar .back:hover{color:var(--ink);}
 
     /* ---------- hero ---------- */
-    .hero{padding:clamp(3.5rem,9vh,7rem) 0 clamp(2.5rem,6vh,4.5rem);}
-    .hero h1{font-size:clamp(4.2rem,16vw,13rem); margin:0.4rem 0 0;}
-    .hero .square{display:inline-block; width:0.5em; height:0.16em; background:var(--orange); vertical-align:middle; margin-left:0.1em;}
-    .hero .sub{
-      font-family:var(--display); font-weight:600; line-height:1.05; letter-spacing:-0.01em;
-      font-size:clamp(1.5rem,3.4vw,2.6rem); max-width:20ch; margin:clamp(1.6rem,4vh,2.6rem) 0 0;
-    }
-    .hero .lede{max-width:52ch; margin:1.4rem 0 0; color:var(--muted); font-size:clamp(1rem,1.1vw,1.2rem);}
-    .hero .credit{max-width:52ch; margin:1.1rem 0 0; color:var(--muted); font-size:0.92rem;}
+    .hero{padding:clamp(2.5rem,7vh,5rem) 0 var(--vspace);}
+    .hero h1{font-size:clamp(2.6rem,13vw,12rem); margin:0.4rem 0 clamp(1.6rem,4vh,2.6rem);}
+    .hero .sub{font-family:var(--display); font-weight:600; line-height:1.05; letter-spacing:-0.01em; font-size:clamp(1.5rem,3vw,2.5rem); margin:0; max-width:20ch;}
+    .hero .lede{margin:0; color:var(--muted); font-size:clamp(1rem,1.1vw,1.15rem); max-width:46ch;}
+    .hero .credit{margin:1.1rem 0 0; color:var(--muted); font-size:0.92rem;}
     .hero .credit a{text-decoration:underline; text-decoration-color:var(--amber); text-decoration-thickness:0.12em; text-underline-offset:0.16em; transition:text-decoration-color .18s ease;}
     .hero .credit a:hover{text-decoration-color:var(--orange);}
 
-    /* ---------- research question band ---------- */
-    .band{background:var(--ink); color:var(--cream); padding:clamp(3rem,8vh,6rem) 0;}
+    /* ---------- research question band (the dark box) ---------- */
+    .band{background:var(--ink); color:var(--cream); padding:var(--vspace) 0;}
     .band .eyebrow{color:rgba(243,240,231,0.6);}
-    .band h2{font-size:clamp(1.9rem,4.6vw,3.6rem); margin:1rem 0 0; max-width:22ch;}
-    .band .meta{margin:1.8rem 0 0; color:rgba(243,240,231,0.7); font-size:0.95rem; letter-spacing:0.02em;}
+    .band h2{font-size:clamp(1.9rem,4vw,3.4rem); margin:1rem 0 0; max-width:20ch;}
+    .band .meta{color:rgba(243,240,231,0.72); font-size:0.95rem; letter-spacing:0.01em; margin:0.4rem 0 0; max-width:34ch;}
 
     /* ---------- downloads ---------- */
-    .downloads{padding:clamp(3rem,7vh,5.5rem) 0;}
-    .dl-grid{display:grid; grid-template-columns:1fr 1fr; gap:clamp(1rem,2vw,1.5rem); margin-top:1.8rem;}
-    @media(max-width:680px){.dl-grid{grid-template-columns:1fr;}}
+    .downloads{padding:var(--vspace) 0;}
+    .downloads .eyebrow{margin-bottom:1.6rem;}
     .dl{
       display:flex; flex-direction:column; justify-content:space-between; gap:2.2rem;
-      text-decoration:none; border:1.5px solid var(--ink); border-radius:2px;
-      padding:clamp(1.4rem,2.6vw,2rem); min-height:200px; background:var(--cream);
+      text-decoration:none; border:1.5px solid var(--ink);
+      padding:clamp(1.4rem,2.6vw,2rem); min-height:210px; background:var(--cream);
       transition:background .18s ease,color .18s ease,transform .18s ease;
     }
     .dl:hover{background:var(--ink); color:var(--cream); transform:translateY(-3px);}
-    .dl:hover .dl-meta{color:rgba(243,240,231,0.7);}
+    .dl:hover .dl-meta{color:rgba(243,240,231,0.72);}
     .dl .dl-kind{font-size:0.72rem; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:var(--orange);}
-    .dl h3{font-family:var(--display); font-weight:700; font-size:clamp(1.6rem,3vw,2.3rem); line-height:0.98; margin:0.7rem 0 0;}
+    .dl h3{font-family:var(--display); font-weight:700; font-size:clamp(1.6rem,2.6vw,2.2rem); line-height:0.98; margin:0.7rem 0 0;}
     .dl-meta{color:var(--muted); font-size:0.9rem; transition:color .18s ease;}
     .dl-cta{font-weight:600; font-size:0.95rem;}
     .dl-cta::after{content:" ↓";}
 
-    /* ---------- articles ---------- */
-    .article{padding:clamp(3rem,8vh,6rem) 0; border-top:1px solid var(--line);}
-    .article .kicker{color:var(--orange);}
-    .article h2{font-size:clamp(2.2rem,6vw,5rem); margin:1rem 0 1.6rem; max-width:16ch;}
-    .cols{display:grid; grid-template-columns:1fr 1fr; gap:clamp(1.5rem,4vw,4rem);}
-    @media(max-width:760px){.cols{grid-template-columns:1fr; gap:1.2rem;}}
-    .article p{margin:0 0 1.1rem; max-width:60ch;}
-    .pull{
-      font-family:var(--display); font-weight:600; line-height:1.05; letter-spacing:-0.01em;
-      font-size:clamp(1.6rem,3vw,2.4rem); margin:0; align-self:start;
-    }
+    /* ---------- articles: strict two columns ---------- */
+    .article{padding:var(--vspace) 0; border-top:1.5px solid var(--ink);}
+    .article h2{font-size:clamp(2rem,4vw,3.5rem); margin:1rem 0 1.4rem; max-width:15ch;}
+    .col-text p{margin:0 0 1.1rem; max-width:56ch;}
+    .col-text p:last-child{margin-bottom:0;}
+    .col-aside{position:sticky; top:1.5rem;}
+    @media(max-width:820px){ .col-aside{position:static;} }
+    .pull{font-family:var(--display); font-weight:600; line-height:1.05; letter-spacing:-0.01em; font-size:clamp(1.6rem,2.8vw,2.3rem); margin:0;}
 
-    /* stats */
-    .stats{display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; margin:0.5rem 0 2.6rem;}
-    @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr);}}
-    .stat .n{font-family:var(--display); font-weight:700; font-size:clamp(2.6rem,7vw,4.6rem); line-height:0.9;}
-    .stat .n small{font-size:0.42em; vertical-align:0.35em; margin-left:0.05em;}
-    .stat .l{margin-top:0.5rem; font-size:0.9rem; color:var(--muted); max-width:22ch;}
-    .stat.amber .n{color:var(--ink);} .stat.amber .n small{color:var(--orange);}
+    /* stats — 2x2 in the aside, same grid feel */
+    .stats2{display:grid; grid-template-columns:1fr 1fr; gap:clamp(1rem,2vw,1.6rem);}
+    .stat .n{font-family:var(--display); font-weight:700; font-size:clamp(2.4rem,5vw,3.8rem); line-height:0.9;}
+    .stat .n small{font-size:0.42em; vertical-align:0.35em; margin-left:0.05em; color:var(--orange);}
+    .stat .l{margin-top:0.5rem; font-size:0.86rem; color:var(--muted);}
 
-    /* two-role split */
-    .split{display:grid; grid-template-columns:1fr 1fr; gap:0; margin-top:1.5rem; border:1.5px solid var(--ink);}
-    @media(max-width:680px){.split{grid-template-columns:1fr;}}
+    /* connector / gatekeeper split — aligned to the same grid, dark frame */
+    .split{display:grid; grid-template-columns:1fr 1fr; gap:0; margin-top:var(--colgap); border:1.5px solid var(--ink);}
+    @media(max-width:820px){ .split{grid-template-columns:1fr;} }
     .split .cell{padding:clamp(1.4rem,2.5vw,2rem);}
     .split .cell + .cell{border-left:1.5px solid var(--ink);}
-    @media(max-width:680px){.split .cell + .cell{border-left:none; border-top:1.5px solid var(--ink);}}
-    .split h4{font-family:var(--display); font-weight:700; font-size:1.5rem; margin:0 0 0.9rem;}
-    .split.connector h4{color:var(--ink);}
+    @media(max-width:820px){ .split .cell + .cell{border-left:none; border-top:1.5px solid var(--ink);} }
+    .split h4{font-family:var(--display); font-weight:700; font-size:1.5rem; margin:0.7rem 0 0.9rem;}
     .split ul{margin:0; padding:0; list-style:none;}
-    .split li{padding:0.55rem 0; border-bottom:1px dashed var(--line); font-size:0.98rem;}
+    .split li{padding:0.55rem 0; border-bottom:1px dashed rgba(22,19,15,0.18); font-size:0.96rem;}
     .split li:last-child{border-bottom:none;}
-    .tag{display:inline-block; font-size:0.68rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; padding:0.2rem 0.5rem; border-radius:2px;}
+    .tag{display:inline-block; font-size:0.68rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; padding:0.2rem 0.5rem;}
     .tag.on{background:var(--amber); color:var(--ink);}
     .tag.off{background:var(--orange); color:var(--cream);}
 
-    /* making-of timeline */
-    .steps{counter-reset:step; margin-top:1rem;}
-    .step{display:grid; grid-template-columns:auto 1fr; gap:1.2rem; padding:1.3rem 0; border-top:1px solid var(--line);}
-    .step::before{
-      counter-increment:step; content:counter(step,decimal-leading-zero);
-      font-family:var(--display); font-weight:700; color:var(--orange); font-size:1.4rem;
-    }
+    /* making-of steps */
+    .steps{counter-reset:step; margin-top:var(--colgap);}
+    .step{display:grid; grid-template-columns:auto 1fr; gap:1.4rem; padding:1.3rem 0; border-top:1px solid rgba(22,19,15,0.16);}
+    .step::before{counter-increment:step; content:counter(step,decimal-leading-zero); font-family:var(--display); font-weight:700; color:var(--orange); font-size:1.4rem;}
     .step h4{font-family:var(--display); font-weight:700; font-size:1.35rem; margin:0 0 0.4rem;}
-    .step p{margin:0; color:var(--muted);}
+    .step p{margin:0; color:var(--muted); max-width:60ch;}
 
-    /* ---------- closing + footer ---------- */
+    /* closing + footer */
     .closing{background:var(--orange); color:var(--cream); padding:clamp(3.5rem,10vh,7rem) 0;}
-    .closing h2{font-size:clamp(2.2rem,6vw,4.8rem); margin:0; max-width:18ch;}
+    .closing h2{font-size:clamp(2.2rem,5vw,4.4rem); margin:0.8rem 0 0; max-width:18ch;}
     .closing .amber{color:var(--ink);}
+    .closing .eyebrow{color:rgba(243,240,231,0.75);}
     footer{background:var(--ink); color:var(--cream); padding:clamp(2.2rem,5vh,3.2rem) 0;}
     footer .back-home{font-weight:500; font-size:1rem; text-decoration:none; opacity:0.85; transition:opacity .18s ease;}
     footer .back-home:hover{opacity:1;}
-    footer .f-top{display:flex; justify-content:space-between; gap:2rem; flex-wrap:wrap; align-items:flex-end;}
-    footer .f-brand{font-family:var(--display); font-weight:700; font-size:clamp(2rem,5vw,3.4rem);}
-    footer a{font-weight:500;}
-    footer .f-links{display:flex; gap:1.4rem; flex-wrap:wrap;}
-    footer .f-meta{margin-top:2.4rem; padding-top:1.4rem; border-top:1px solid rgba(243,240,231,0.18); color:rgba(243,240,231,0.6); font-size:0.85rem; display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap;}
+
+    @media(prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} }
   </style>
 </head>
 <body>
@@ -161,147 +150,183 @@
   </div>
 
   <!-- HERO -->
-  <header class="hero wrap">
-    <p class="eyebrow">EMBA 2025 · Berlin School of Creative Leadership · Steinbeis University</p>
-    <h1 class="display">Joyful<br>Deliberate<span class="square"></span></h1>
-    <p class="sub">What if humor is not the opposite of serious work — but its <span class="u-orange">origin?</span></p>
-    <p class="lede">A master thesis on how humor shapes psychological safety, trust and innovation at work — and why treating it deliberately is a leadership capability, not a personality trait.</p>
-    <p class="credit">Supervised by <a href="https://www.linkedin.com/in/yoan-tanasale/" target="_blank" rel="noopener noreferrer">Yoan Tanasale</a> &amp; <a href="https://www.linkedin.com/in/daslocum/" target="_blank" rel="noopener noreferrer">Prof. Dr. David Slocum</a>.</p>
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow">EMBA 2025 · Berlin School of Creative Leadership · Steinbeis University</p>
+      <h1 class="display">Joyful<br>Deliberate<span class="square"></span></h1>
+      <div class="grid2">
+        <p class="sub">What if humor is not the opposite of serious work — but its <span class="u-orange">origin?</span></p>
+        <div>
+          <p class="lede">A master thesis on how humor shapes psychological safety, trust and innovation at work — and why treating it deliberately is a leadership capability, not a personality trait.</p>
+          <p class="credit">Supervised by <a href="https://www.linkedin.com/in/yoan-tanasale/" target="_blank" rel="noopener noreferrer">Yoan Tanasale</a> &amp; <a href="https://www.linkedin.com/in/daslocum/" target="_blank" rel="noopener noreferrer">Prof. Dr. David Slocum</a>.</p>
+        </div>
+      </div>
+    </div>
   </header>
 
-  <!-- RESEARCH QUESTION -->
+  <!-- RESEARCH QUESTION (dark box) -->
   <section class="band">
     <div class="wrap">
-      <p class="eyebrow">The central question</p>
-      <h2 class="display">What is the relationship between a <span class="u-amber">humor-inclusive</span> work environment and overall business <span class="u-amber">innovation</span> and growth?</h2>
-      <p class="meta">Mixed-method survey · N=125 · Europe, Latin America &amp; North America · creative industries, technology, education, NGOs &amp; consultancy.</p>
+      <div class="grid2">
+        <div>
+          <p class="eyebrow">The central question</p>
+          <h2 class="display">What is the relationship between a <span class="u-amber">humor-inclusive</span> work environment and overall business <span class="u-amber">innovation</span> and growth?</h2>
+        </div>
+        <div>
+          <p class="meta">Mixed-method survey · N=125 · Europe, Latin America &amp; North America · across creative industries, technology, education, NGOs &amp; consultancy.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- DOWNLOADS -->
-  <section class="downloads wrap" id="download">
-    <p class="eyebrow">Download the research</p>
-    <div class="dl-grid">
-      <a class="dl" href="joyful-deliberate-thesis.pdf" download>
-        <div>
-          <span class="dl-kind">Master Thesis</span>
-          <h3 class="display">The full study</h3>
-        </div>
-        <div>
-          <p class="dl-meta">85 pages · PDF</p>
-          <span class="dl-cta">Download</span>
-        </div>
-      </a>
-      <a class="dl" href="joyful-deliberate-literature-review.pdf" download>
-        <div>
-          <span class="dl-kind">Literature Review</span>
-          <h3 class="display">The theoretical foundations</h3>
-        </div>
-        <div>
-          <p class="dl-meta">47 pages · PDF</p>
-          <span class="dl-cta">Download</span>
-        </div>
-      </a>
+  <section class="downloads" id="download">
+    <div class="wrap">
+      <p class="eyebrow">Download the research</p>
+      <div class="grid2">
+        <a class="dl" href="joyful-deliberate-thesis.pdf" download>
+          <div>
+            <span class="dl-kind">Master Thesis</span>
+            <h3 class="display">The full study</h3>
+          </div>
+          <div>
+            <p class="dl-meta">85 pages · PDF</p>
+            <span class="dl-cta">Download</span>
+          </div>
+        </a>
+        <a class="dl" href="joyful-deliberate-literature-review.pdf" download>
+          <div>
+            <span class="dl-kind">Literature Review</span>
+            <h3 class="display">The theoretical foundations</h3>
+          </div>
+          <div>
+            <p class="dl-meta">47 pages · PDF</p>
+            <span class="dl-cta">Download</span>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 
   <!-- ARTICLE 1 — SIGNAL + LEVER -->
-  <article class="article wrap">
-    <p class="eyebrow kicker">The model · 01</p>
-    <h2 class="display">Humor is a <span class="u-amber">signal</span>. And a <span class="u-orange">lever</span>.</h2>
-    <div class="cols">
-      <div>
-        <p>Humor does two things at once. As a <strong>signal</strong>, it tells you what's already true about a culture — how much trust, safety and inclusion actually exist. Its frequency, its tone and, above all, <em>who gets to use it</em> reveal the emotional climate of a team more honestly than any engagement survey.</p>
-        <p>As a <strong>lever</strong>, humor can change that climate. A well-timed joke lowers interpersonal risk, resets tension, restores energy and reframes failure as something survivable — even useful. It expands the emotional bandwidth a team needs to take creative risks.</p>
-        <p>The two form a loop: humor reads the climate <em>and</em> shapes it. But the effect is conditional — mediated by authenticity, status and context. Balanced, humor becomes part of the emotional infrastructure that makes innovation possible.</p>
+  <article class="article">
+    <div class="wrap">
+      <div class="grid2">
+        <div class="col-text">
+          <p class="eyebrow kicker">The model · 01</p>
+          <h2 class="display">Humor is a <span class="u-amber">signal</span>. And a <span class="u-orange">lever</span>.</h2>
+          <p>Humor does two things at once. As a <strong>signal</strong>, it tells you what's already true about a culture — how much trust, safety and inclusion actually exist. Its frequency, its tone and, above all, <em>who gets to use it</em> reveal the emotional climate of a team more honestly than any engagement survey.</p>
+          <p>As a <strong>lever</strong>, humor can change that climate. A well-timed joke lowers interpersonal risk, resets tension, restores energy and reframes failure as something survivable — even useful. It expands the emotional bandwidth a team needs to take creative risks.</p>
+          <p>The two form a loop: humor reads the climate <em>and</em> shapes it. But the effect is conditional — mediated by authenticity, status and context. Balanced, humor becomes part of the emotional infrastructure that makes innovation possible.</p>
+        </div>
+        <aside class="col-aside">
+          <p class="pull">Signal and lever<br>are a <span class="orange">loop.</span></p>
+        </aside>
       </div>
-      <p class="pull">Signal and lever<br>are a <span class="orange">loop.</span></p>
     </div>
   </article>
 
   <!-- ARTICLE 2 — QUALITY OVER FREQUENCY -->
-  <article class="article wrap">
-    <p class="eyebrow kicker">The finding that surprised me · 02</p>
-    <h2 class="display">It's not how much.<br>It's <span class="u-orange">how</span>.</h2>
-    <div class="cols">
-      <div>
-        <p>Innovation was <strong>not</strong> linked to how often people joke. It was linked to humor <strong>quality</strong>: its inclusivity, its timing, and its alignment with team norms and emotional states. The same joke can open a room or close it — the difference is relational, not verbal.</p>
-        <p>That's why authentic, context-sensitive humor built openness and flattened hierarchy, while performative or misaligned humor read as avoidance and image management — and quietly eroded trust.</p>
-        <p>The practical upshot is what I call <strong>humor literacy</strong>: knowing <em>when</em>, <em>how</em> and <em>for whom</em>. It's not a personality trait some leaders happen to have. It's a practice anyone can learn.</p>
+  <article class="article">
+    <div class="wrap">
+      <div class="grid2">
+        <div class="col-text">
+          <p class="eyebrow kicker">The finding that surprised me · 02</p>
+          <h2 class="display">It's not how much. It's <span class="u-orange">how</span>.</h2>
+          <p>Innovation was <strong>not</strong> linked to how often people joke. It was linked to humor <strong>quality</strong>: its inclusivity, its timing, and its alignment with team norms and emotional states. The same joke can open a room or close it — the difference is relational, not verbal.</p>
+          <p>That's why authentic, context-sensitive humor built openness and flattened hierarchy, while performative or misaligned humor read as avoidance and image management — and quietly eroded trust.</p>
+          <p>The practical upshot is what I call <strong>humor literacy</strong>: knowing <em>when</em>, <em>how</em> and <em>for whom</em>. It's not a personality trait some leaders happen to have. It's a practice anyone can learn.</p>
+        </div>
+        <aside class="col-aside">
+          <p class="pull">Inclusivity over volume.<br><span class="orange">Timing over quantity.</span></p>
+        </aside>
       </div>
-      <p class="pull">Inclusivity over volume.<br><span class="orange">Timing over quantity.</span></p>
     </div>
   </article>
 
   <!-- ARTICLE 3 — KEY FINDINGS -->
-  <article class="article wrap">
-    <p class="eyebrow kicker">The evidence · 03</p>
-    <h2 class="display">A mixed-method study of why we <span class="u-amber">laugh at work</span>.</h2>
-    <p style="max-width:64ch; margin:0 0 2rem;">Not a set of casual chats. A mixed-method study: quantitative Likert-scale patterns (N=125, three continents, five sectors) triangulated with qualitative, open-ended stories — and read against real market cases like <strong>Google</strong> and <strong>Bare Minerals</strong>, where leader humor visibly shaped culture.</p>
-    <div class="stats">
-      <div class="stat amber"><div class="n">~70<small>%</small></div><div class="l">say humor shows up often at work</div></div>
-      <div class="stat amber"><div class="n">~60<small>%</small></div><div class="l">feel safe using it — safety is uneven</div></div>
-      <div class="stat amber"><div class="n">1<small>/3</small></div><div class="l">say their leader's humor is aligned with the team</div></div>
-      <div class="stat amber"><div class="n">2</div><div class="l">humor styles — affiliative &amp; self-deprecating — track with creativity</div></div>
-    </div>
-    <p style="max-width:60ch; margin:0 0 2rem;">The numbers pointed to a paradox: humor is nearly everywhere, but it lands very differently depending on who you are. In the open-ended answers, the same behavior showed two opposite faces.</p>
-    <div class="split">
-      <div class="cell connector">
-        <span class="tag on">Connector</span>
-        <h4>When humor includes</h4>
-        <ul>
-          <li>Builds trust and belonging</li>
-          <li>Resets tension, restores energy</li>
-          <li>Encourages creative risk-taking</li>
-          <li>Softens the sting of setbacks</li>
-          <li>Reframes failure as learning</li>
-        </ul>
+  <article class="article">
+    <div class="wrap">
+      <div class="grid2">
+        <div class="col-text">
+          <p class="eyebrow kicker">The evidence · 03</p>
+          <h2 class="display">A mixed-method study of why we <span class="u-amber">laugh at work</span>.</h2>
+          <p>Not a set of casual chats. A mixed-method study: quantitative Likert-scale patterns (N=125, three continents, five sectors) triangulated with qualitative, open-ended stories — and read against real market cases like <strong>Google</strong> and <strong>Bare Minerals</strong>, where leader humor visibly shaped culture.</p>
+          <p>The numbers pointed to a paradox: humor is nearly everywhere, but it lands very differently depending on who you are. In the open-ended answers, the same behavior showed two opposite faces.</p>
+        </div>
+        <aside class="col-aside">
+          <div class="stats2">
+            <div class="stat"><div class="n">~70<small>%</small></div><div class="l">say humor shows up often at work</div></div>
+            <div class="stat"><div class="n">~60<small>%</small></div><div class="l">feel safe using it — safety is uneven</div></div>
+            <div class="stat"><div class="n">1<small>/3</small></div><div class="l">say their leader's humor is aligned</div></div>
+            <div class="stat"><div class="n">2</div><div class="l">styles — affiliative &amp; self-deprecating — track with creativity</div></div>
+          </div>
+        </aside>
       </div>
-      <div class="cell gatekeeper">
-        <span class="tag off">Gatekeeper</span>
-        <h4>When humor excludes</h4>
-        <ul>
-          <li>Reinforces in-groups and exclusion</li>
-          <li>Silences voices, limits contribution</li>
-          <li>Masks real issues and accountability</li>
-          <li>Sarcasm &amp; performance track with distance</li>
-          <li>Access is unequal — by role and status</li>
-        </ul>
+      <div class="split">
+        <div class="cell">
+          <span class="tag on">Connector</span>
+          <h4>When humor includes</h4>
+          <ul>
+            <li>Builds trust and belonging</li>
+            <li>Resets tension, restores energy</li>
+            <li>Encourages creative risk-taking</li>
+            <li>Softens the sting of setbacks</li>
+            <li>Reframes failure as learning</li>
+          </ul>
+        </div>
+        <div class="cell">
+          <span class="tag off">Gatekeeper</span>
+          <h4>When humor excludes</h4>
+          <ul>
+            <li>Reinforces in-groups and exclusion</li>
+            <li>Silences voices, limits contribution</li>
+            <li>Masks real issues and accountability</li>
+            <li>Sarcasm &amp; performance track with distance</li>
+            <li>Access is unequal — by role and status</li>
+          </ul>
+        </div>
       </div>
     </div>
   </article>
 
   <!-- ARTICLE 4 — MAKING OF -->
-  <article class="article wrap">
-    <p class="eyebrow kicker">The making-of · 04</p>
-    <h2 class="display">How I built <span class="u-amber">this</span>.</h2>
-    <div class="cols" style="margin-bottom:1rem;">
-      <p>The question started as a hunch. Working in creative, digital and innovation teams — mostly hybrid and remote — I kept noticing that shared humor unlocked openness and idea flow, while its absence or misuse tracked with tension and guardedness. If humor so clearly shaped how people create together, why was it almost never treated as a deliberate cultural capability?</p>
-      <p class="pull">Not a distraction from serious work — one of its most <span class="orange">underused enablers.</span></p>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <div>
-          <h4>The sparks</h4>
-          <p>Cultural cases lit the fuse: the Las Vegas Aces pairing TikTok dances with a winning culture; Mike Vrabel sprinting into the locker room to celebrate players and reset a famously joyless tone; even the Ballmer &amp; Gates "Windows dance" — read not as cringe, but as live emotional signaling.</p>
+  <article class="article">
+    <div class="wrap">
+      <div class="grid2">
+        <div class="col-text">
+          <p class="eyebrow kicker">The making-of · 04</p>
+          <h2 class="display">How I built <span class="u-amber">this</span>.</h2>
+          <p>The question started as a hunch. Working in creative, digital and innovation teams — mostly hybrid and remote — I kept noticing that shared humor unlocked openness and idea flow, while its absence or misuse tracked with tension and guardedness. If humor so clearly shaped how people create together, why was it almost never treated as a deliberate cultural capability?</p>
         </div>
+        <aside class="col-aside">
+          <p class="pull">Not a distraction from serious work — one of its most <span class="orange">underused enablers.</span></p>
+        </aside>
       </div>
-      <div class="step">
-        <div>
-          <h4>The lenses</h4>
-          <p>I grounded the hunch in theory: Martin &amp; Ford's humor styles, Edmondson's psychological safety, LMX and empowering-leadership research, and the idea of humor as cultural infrastructure — a social technology built from rituals and norms.</p>
+      <div class="steps">
+        <div class="step">
+          <div>
+            <h4>The sparks</h4>
+            <p>Cultural cases lit the fuse: the Las Vegas Aces pairing TikTok dances with a winning culture; Mike Vrabel sprinting into the locker room to celebrate players and reset a famously joyless tone; even the Ballmer &amp; Gates "Windows dance" — read not as cringe, but as live emotional signaling.</p>
+          </div>
         </div>
-      </div>
-      <div class="step">
-        <div>
-          <h4>The study</h4>
-          <p>A mixed-method survey, five sub-questions, 125 valid responses across three continents and five sectors. Likert-scale patterns for the "what," open-ended stories for the "why" — then months of coding to let the tensions surface honestly.</p>
+        <div class="step">
+          <div>
+            <h4>The lenses</h4>
+            <p>I grounded the hunch in theory: Martin &amp; Ford's humor styles, Edmondson's psychological safety, LMX and empowering-leadership research, and the idea of humor as cultural infrastructure — a social technology built from rituals and norms.</p>
+          </div>
         </div>
-      </div>
-      <div class="step">
-        <div>
-          <h4>The model</h4>
-          <p>Everything converged on a <strong>Signal–Lever Model of Humor in Organizations</strong> — and a build-in-public summer on LinkedIn, testing each idea out loud with the people who lived it. Defended at the Berlin School of Creative Leadership, September 2025.</p>
+        <div class="step">
+          <div>
+            <h4>The study</h4>
+            <p>A mixed-method survey, five sub-questions, 125 valid responses across three continents and five sectors. Likert-scale patterns for the "what," open-ended stories for the "why" — then months of coding to let the tensions surface honestly.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div>
+            <h4>The model</h4>
+            <p>Everything converged on a <strong>Signal–Lever Model of Humor in Organizations</strong> — and a build-in-public summer on LinkedIn, testing each idea out loud with the people who lived it. Defended at the Berlin School of Creative Leadership, September 2025.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -310,7 +335,7 @@
   <!-- CLOSING -->
   <section class="closing">
     <div class="wrap">
-      <p class="eyebrow" style="color:rgba(243,240,231,0.7);">The takeaway</p>
+      <p class="eyebrow">The takeaway</p>
       <h2 class="display">Serious work deserves to be done with <span class="amber">joy</span>, humanity, and a little laughter.</h2>
     </div>
   </section>
